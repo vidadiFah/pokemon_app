@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_app/pokemon_screen.dart';
 
 class PokemonItem extends StatelessWidget {
-  const PokemonItem({super.key});
+  final PokemonModel model;
+  const PokemonItem({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
-    final url = 'https://gpng.net/wp-content/uploads/Cute-Bulbasaur-png.png';
-
     return Container(
       height: 204,
       width: 212,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.green, width: 8),
+        border: Border.all(color: model.color, width: 2),
         borderRadius: BorderRadius.circular(6),
       ),
       child: Column(
@@ -21,20 +21,19 @@ class PokemonItem extends StatelessWidget {
           Expanded(
             child: Center(
               child: Container(
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.all(4),
                 child: Image.network(
-                  url,
-                  height: 100,
+                  model.image,
                 ),
               ),
             ),
           ),
           Container(width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-                color: Colors.green,
+                color: model.color,
             ),
             child: Text(
-              'Bulba',
+              model.name,
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white),
             ),
