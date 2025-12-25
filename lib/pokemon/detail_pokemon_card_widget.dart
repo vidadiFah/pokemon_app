@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_app/pokemon_screen.dart';
-import 'package:pokemon_app/pokemon_type_item.dart';
+import 'package:pokemon_app/pokemon/pokemon_screen.dart';
+import 'package:pokemon_app/pokemon/pokemon_type_item.dart';
 
 class DetailPokemonCardWidget extends StatelessWidget {
   final PokemonModel model;
@@ -52,20 +52,6 @@ class DetailPokemonCardWidget extends StatelessWidget {
                     ],
                 ),
 
-                SizedBox(height: 20),
-
-                // Type item
-                Row(
-                  children: (model.type ?? []).map((type) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: PokemonTypeItem(
-                        type: type,
-                        color: model.color,
-                      ),
-                    );
-                  }).toList(),
-                ),
 
                 SizedBox(height: 24),
 
@@ -90,11 +76,29 @@ class DetailPokemonCardWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'About',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      // Type item
+                      Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: (model.type ?? []).map((type) {
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: PokemonTypeItem(
+                                type: type,
+                                color: model.color,
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          'About',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                              color: model.color
+                          ),
                         ),
                       ),
 
